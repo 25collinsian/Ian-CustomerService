@@ -1,63 +1,44 @@
 package org.example.iancustomersupport;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 class TicketTest {
+    private Ticket ticket;
+
 
     @Test
-    void testTicketCreation() {
-        Ticket ticket = new Ticket("Ethan Lau", "Product won't start", "The product won't start.");
-
-        assertEquals("Ethan Lau", ticket.getCustomerName());
-        assertEquals("Product won't start", ticket.getSubject());
-        assertEquals("The product won't start.", ticket.getBody());
-        assertEquals(0, ticket.getNumberOfAttachments());
-        assertNotNull(ticket.getAllAttachments());
+    void getTitle() {
+        Ticket ticket = new Ticket("Test Title", "Test Body", null);
+        assertEquals("Test Title", ticket.getTitle());
     }
 
     @Test
-    void testAddAttachment() {
-        Ticket ticket = new Ticket();
-
-        byte[] attachmentContent = "Attachment content".getBytes();
-        ticket.addAttachment("file.txt", attachmentContent);
-
-        assertEquals(1, ticket.getNumberOfAttachments());
-        assertNotNull(ticket.getAttachment(0));
-        assertArrayEquals(attachmentContent, ticket.getAttachment(0));
+    void setTitle() {
+        Ticket ticket = new Ticket("Test Title", "Test Body", null);
+        ticket.setTitle("New Title");
+        assertEquals("New Title", ticket.getTitle());
     }
 
     @Test
-    void testGetNumberOfAttachments() {
-        Ticket ticket = new Ticket();
-
-        ticket.addAttachment("file1.txt", "Attachment 1 content".getBytes());
-        ticket.addAttachment("file2.txt", "Attachment 2 content".getBytes());
-
-        assertEquals(2, ticket.getNumberOfAttachments()); // Number of attachments is correct
+    void getDate() {
+        Ticket ticket = new Ticket("Test Title", "Test Body", null);
+        assertEquals(LocalDate.now(), ticket.getDate());
     }
 
     @Test
-    void testGetAttachment() {
-        Ticket ticket = new Ticket();
-
-        byte[] attachmentContent = "Attachment content".getBytes();
-        ticket.addAttachment("file.txt", attachmentContent);
-
-        byte[] retrievedAttachment = ticket.getAttachment(0);
-
-        assertArrayEquals(attachmentContent, retrievedAttachment); // Attachment content is correct
+    void getBody() {
+        Ticket ticket = new Ticket("Test Title", "Test Body", null);
+        assertEquals("Test Body", ticket.getBody());
     }
 
     @Test
-    void testGetAllAttachments() {
-        Ticket ticket = new Ticket();
-
-        ticket.addAttachment("file1.txt", "Attachment 1 content".getBytes());
-        ticket.addAttachment("file2.txt", "Attachment 2 content".getBytes());
-
-        assertEquals(2, ticket.getAllAttachments().size()); // All attachments are retrieved
+    void setBody() {
+        Ticket ticket = new Ticket("Test Title", "Test Body", null);
+        ticket.setBody("New Body");
+        assertEquals("New Body", ticket.getBody());
     }
 }

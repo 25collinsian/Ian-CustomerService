@@ -9,15 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fb08a49-ba2d-4e5d-a90c-deb9571af874" name="Changes" comment="Added POJOS Attachment and Ticket as well as a Test for Ticket">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Blog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/BlogServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Image.java" afterDir="false" />
+    <list default="true" id="5fb08a49-ba2d-4e5d-a90c-deb9571af874" name="Changes" comment="I realized I was doing it wrong, so I downloaded coding examples and started over using those as a template.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Attachment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Ticket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/BlogServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/TicketServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Attachment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/iancustomersupport/TicketTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/iancustomersupport/TicketTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -78,12 +75,12 @@
       <recent name="org.example.iancustomersupport" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.192">
+  <component name="RunManager" selected="JUnit.TicketTest">
     <configuration name="TicketTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Ian-CustomerSupport" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.iancustomersupport.*" />
+          <option name="PATTERN" value="org.example.iancustomersupport.Ticket" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -98,7 +95,7 @@
       <module name="Ian-CustomerSupport" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.iancustomersupport.*" />
+          <option name="PATTERN" value="org.example.iancustomersupport.Ticket" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -213,7 +210,9 @@
       <updated>1712160210177</updated>
       <workItem from="1712160211289" duration="1693000" />
       <workItem from="1712335068940" duration="1258000" />
-      <workItem from="1712763583659" duration="2755000" />
+      <workItem from="1712763583659" duration="3769000" />
+      <workItem from="1712938766576" duration="2370000" />
+      <workItem from="1712941563594" duration="970000" />
     </task>
     <task id="LOCAL-00001" summary="Created project">
       <option name="closed" value="true" />
@@ -231,7 +230,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712763969431</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="I realized I was doing it wrong, so I downloaded coding examples and started over using those as a template.">
+      <option name="closed" value="true" />
+      <created>1712766545023</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712766545023</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +247,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created project" />
     <MESSAGE value="Added POJOS Attachment and Ticket as well as a Test for Ticket" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added POJOS Attachment and Ticket as well as a Test for Ticket" />
+    <MESSAGE value="I realized I was doing it wrong, so I downloaded coding examples and started over using those as a template." />
+    <option name="LAST_COMMIT_MESSAGE" value="I realized I was doing it wrong, so I downloaded coding examples and started over using those as a template." />
   </component>
 </project>
