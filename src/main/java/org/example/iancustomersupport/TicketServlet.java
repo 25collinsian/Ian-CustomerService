@@ -12,8 +12,8 @@ import jakarta.servlet.annotation.*;
 @WebServlet(name = "ticket", value="/ticket")
 @MultipartConfig(fileSizeThreshold = 5_242_880, maxFileSize = 20_971_520L, maxRequestSize = 41_943_040L)
 public class TicketServlet extends HttpServlet{
-    private volatile int BLOG_ID = 1;
-    private Map<Integer, Ticket> blogDB = new LinkedHashMap<>();
+    private volatile int ticket_ID = 1;
+    private Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,9 +25,9 @@ public class TicketServlet extends HttpServlet{
             action = "list";
         }
         switch(action) {
-            case "createBlog" -> showPostForm(request, response);
+            case "createticket" -> showPostForm(request, response);
             case "view" -> viewPost(request, response);
-            case "download" -> downloadImage(request, response);
+            case "download" -> downloadAttachment(request, response);
             default -> listPosts(request, response); // this the list and any other
         }
         
@@ -44,7 +44,7 @@ public class TicketServlet extends HttpServlet{
         }
         switch(action) {
             case "create" -> createPost(request, response);
-            default -> response.sendRedirect("blog"); // this the list and any other
+            default -> response.sendRedirect("ticket"); // this the list and any other
         }
     }
 
@@ -53,19 +53,19 @@ public class TicketServlet extends HttpServlet{
     private void listPosts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         PrintWriter out = response.getWriter();
 
-        //heading and link to create a blog
-        out.println("<html><body><h2>Blog Posts</h2>");
-        out.println("<a href=\"blog?action=createBlog\">Create Post</a><br><br>");
+        //heading and link to create a ticket
+        out.println("<html><body><h2>ticket Posts</h2>");
+        out.println("<a href=\"ticket?action=createticket\">Create Post</a><br><br>");
 
-        // list out the blogs
-        if (blogDB.size() == 0) {
-            out.println("There are no blog posts yet...");
+        // list out the tickets
+        if (ticketDB.size() == 0) {
+            out.println("There are no ticket posts yet...");
         }
         else {
-            for (int id : blogDB.keySet()) {
-                Ticket ticket = blogDB.get(id);
-                out.println("Blog #" + id);
-                out.println(": <a href=\"blog?action=view&blogId=" + id + "\">");
+            for (int id : ticketDB.keySet()) {
+                Ticket ticket = ticketDB.get(id);
+                out.println("ticket #" + id);
+                out.println(": <a href=\"ticket?action=view&ticketId=" + id + "\">");
                 out.println(ticket.getTitle() + "</a><br>");
             }
         }
@@ -74,7 +74,7 @@ public class TicketServlet extends HttpServlet{
     }
 
     private void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // create the blog and set all values up
+        // create the ticket and set all values up
         Ticket ticket = new Ticket();
         ticket.setTitle(request.getParameter("title"));
         ticket.setDate();
@@ -82,7 +82,7 @@ public class TicketServlet extends HttpServlet{
 
         Part file = request.getPart("file1");
         if (file != null) {
-            Attachment attachment = this.processImage(file);
+            Attachment attachment = this.processAttachment(file);
             if (attachment != null) {
                 ticket.setAttachment(attachment);
             }
@@ -91,15 +91,15 @@ public class TicketServlet extends HttpServlet{
         // add and synchronize
         int id;
         synchronized(this) {
-            id = this.BLOG_ID++;
-            blogDB.put(id, ticket);
+            id = this.ticket_ID++;
+            ticketDB.put(id, ticket);
         }
 
-        //System.out.println(blog);  // see what is in the blog object
-        response.sendRedirect("blog?action=view&blogId=" + id);
+        //System.out.println(ticket);  // see what is in the ticket object
+        response.sendRedirect("ticket?action=view&ticketId=" + id);
     }
 
-    private Attachment processImage(Part file) throws IOException{
+    private Attachment processAttachment(Part file) throws IOException{
         InputStream in = file.getInputStream();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -117,23 +117,23 @@ public class TicketServlet extends HttpServlet{
         return attachment;
     }
 
-    private void downloadImage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String idString = request.getParameter("blogId");
+    private void downloadAttachment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String idString = request.getParameter("ticketId");
 
-        Ticket ticket = getBlog(idString, response);
+        Ticket ticket = getTicket(idString, response);
 
-        String name = request.getParameter("image");
+        String name = request.getParameter("attachment");
         if (name == null) {
-            response.sendRedirect("blog?action=view&blogId=" + idString);
+            response.sendRedirect("ticket?action=view&ticketId=" + idString);
         }
 
         Attachment attachment = ticket.getAttachment();
         if (attachment == null) {
-            response.sendRedirect("blog?action=view&blogId=" + idString);
+            response.sendRedirect("ticket?action=view&ticketId=" + idString);
             return;
         }
 
-        response.setHeader("Content-Disposition", "image; filename=" + attachment.getName());
+        response.setHeader("Content-Disposition", "Attachment; filename=" + attachment.getName());
         response.setContentType("application/octet-stream");
 
         ServletOutputStream out = response.getOutputStream();
@@ -141,21 +141,21 @@ public class TicketServlet extends HttpServlet{
     }
 
     private void viewPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String idString = request.getParameter("blogId");
+        String idString = request.getParameter("ticketId");
 
-            Ticket ticket = getBlog(idString, response);
+            Ticket ticket = getTicket(idString, response);
 
             PrintWriter out = response.getWriter();
-            out.println("<html><body><h2>Blog Post</h2>");
+            out.println("<html><body><h2>ticket Post</h2>");
             out.println("<h3>" + ticket.getTitle()+ "</h3>");
             out.println("<p>Date: " + ticket.getDate() + "</p>");
             out.println("<p>" + ticket.getBody() + "</p>");
             if (ticket.hasAttachment()) {
-                out.println("<a href=\"blog?action=download&blogId=" +
-                        idString + "&image="+ ticket.getAttachment().getName() + "\">" +
+                out.println("<a href=\"ticket?action=download&ticketId=" +
+                        idString + "&attachment="+ ticket.getAttachment().getName() + "\">" +
                         ticket.getAttachment().getName() + "</a><br><br>");
             }
-            out.println("<a href=\"blog\">Return to blog list</a>");
+            out.println("<a href=\"ticket\">Return to ticket list</a>");
             out.println("</body></html>");
 
     }
@@ -163,39 +163,39 @@ public class TicketServlet extends HttpServlet{
     private void showPostForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         PrintWriter out = response.getWriter();
 
-        out.println("<html><body><h2>Create a Blog Post</h2>");
-        out.println("<form method=\"POST\" action=\"blog\" enctype=\"multipart/form-data\">");
+        out.println("<html><body><h2>Create a ticket Post</h2>");
+        out.println("<form method=\"POST\" action=\"ticket\" enctype=\"multipart/form-data\">");
         out.println("<input type=\"hidden\" name=\"action\" value=\"create\">");
         out.println("Title:<br>");
         out.println("<input type=\"text\" name=\"title\"><br><br>");
         out.println("Body:<br>");
         out.println("<textarea name=\"body\" rows=\"25\" cols=\"100\"></textarea><br><br>");
-        out.println("<b>Image</b><br>");
+        out.println("<b>attachment</b><br>");
         out.println("<input type=\"file\" name=\"file1\"><br><br>");
         out.println("<input type=\"submit\" value=\"Submit\">");
         out.println("</form></body></html>");
 
     }
 
-    private Ticket getBlog(String idString, HttpServletResponse response) throws ServletException, IOException{
+    private Ticket getTicket(String idString, HttpServletResponse response) throws ServletException, IOException{
         // empty string id
         if (idString == null || idString.length() == 0) {
-            response.sendRedirect("blog");
+            response.sendRedirect("ticket");
             return null;
         }
 
         // find in the 'database' otherwise return null
         try {
             int id = Integer.parseInt(idString);
-            Ticket ticket = blogDB.get(id);
+            Ticket ticket = ticketDB.get(id);
             if (ticket == null) {
-                response.sendRedirect("blog");
+                response.sendRedirect("ticket");
                 return null;
             }
             return ticket;
         }
         catch(Exception e) {
-            response.sendRedirect("blog");
+            response.sendRedirect("ticket");
             return null;
         }
     }

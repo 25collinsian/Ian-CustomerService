@@ -57,11 +57,11 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Blog{" +
+        return "Ticket{" +
                 "title='" + title + '\'' +
                 ", date=" + date +
                 ", body='" + body + '\'' +
-                ", image=" + attachment +
+                ", attachment=" + attachment +
                 '}';
     }
 }

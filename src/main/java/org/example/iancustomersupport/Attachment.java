@@ -25,7 +25,7 @@ public class Attachment {
 
     @Override
     public String toString() {
-        return "Image{" +
+        return "Attachment{" +
                 "name='" + name + '\'' +
                 ", contents=" + Arrays.toString(contents) +
                 '}';

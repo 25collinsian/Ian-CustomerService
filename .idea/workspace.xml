@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fb08a49-ba2d-4e5d-a90c-deb9571af874" name="Changes" comment="I realized I was doing it wrong, so I downloaded coding examples and started over using those as a template.">
+    <list default="true" id="5fb08a49-ba2d-4e5d-a90c-deb9571af874" name="Changes" comment="I changed all of the classes to Tickets instead of blogs and fixed any errors because of it.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/BlogServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/TicketServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Attachment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/iancustomersupport/TicketTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/iancustomersupport/TicketTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Attachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Attachment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/TicketServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/TicketServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +211,7 @@
       <workItem from="1712335068940" duration="1258000" />
       <workItem from="1712763583659" duration="3769000" />
       <workItem from="1712938766576" duration="2370000" />
-      <workItem from="1712941563594" duration="970000" />
+      <workItem from="1712941563594" duration="1480000" />
     </task>
     <task id="LOCAL-00001" summary="Created project">
       <option name="closed" value="true" />
@@ -238,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712766545023</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="I changed all of the classes to Tickets instead of blogs and fixed any errors because of it.">
+      <option name="closed" value="true" />
+      <created>1713184131281</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713184131281</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +255,7 @@
     <MESSAGE value="Created project" />
     <MESSAGE value="Added POJOS Attachment and Ticket as well as a Test for Ticket" />
     <MESSAGE value="I realized I was doing it wrong, so I downloaded coding examples and started over using those as a template." />
-    <option name="LAST_COMMIT_MESSAGE" value="I realized I was doing it wrong, so I downloaded coding examples and started over using those as a template." />
+    <MESSAGE value="I changed all of the classes to Tickets instead of blogs and fixed any errors because of it." />
+    <option name="LAST_COMMIT_MESSAGE" value="I changed all of the classes to Tickets instead of blogs and fixed any errors because of it." />
   </component>
 </project>
