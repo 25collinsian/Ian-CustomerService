@@ -9,11 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fb08a49-ba2d-4e5d-a90c-deb9571af874" name="Changes" comment="I changed all of the classes to Tickets instead of blogs and fixed any errors because of it.">
+    <list default="true" id="5fb08a49-ba2d-4e5d-a90c-deb9571af874" name="Changes" comment="I found more things that needed to change from the coding example and fixed that.">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/JSP/View/base.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/JSP/View/error.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/JSP/View/listTickets.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/JSP/View/ticketForm.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/JSP/View/viewTicket.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Attachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Attachment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/TicketServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/TicketServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +31,7 @@
       <list>
         <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -55,6 +62,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -67,6 +75,9 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/JSP/View" />
       <recent name="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
@@ -74,7 +85,7 @@
       <recent name="org.example.iancustomersupport" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TicketTest">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.19">
     <configuration name="TicketTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Ian-CustomerSupport" />
       <extension name="coverage">
@@ -106,16 +117,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 10.1.192" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.192" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="Tomcat 10.1.19" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.19" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="Ian-CustomerSupport:war exploded">
+        <artifact name="BlogWebApp:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/Ian_CustomerSupport_war_exploded" />
+            <option name="CONTEXT_PATH" value="/BlogWebApp_war_exploded" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="57256109-b98d-4814-8080-ebec1b5ee6b8" />
+        <option name="BASE_DIRECTORY_NAME" value="d5286652-c5dc-4fbf-af19-74e18fbf8b88" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -123,7 +135,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="56460" />
+        <option name="DEBUG_PORT" value="51586" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -188,10 +200,15 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="Ian-CustomerSupport:war exploded" />
+          <artifact name="BlogWebApp:war exploded" />
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.TicketTest" />
+      <item itemvalue="JUnit.TicketTest.testTicketCreation" />
+      <item itemvalue="Tomcat Server.Tomcat 10.1.19" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TicketTest" />
@@ -211,7 +228,9 @@
       <workItem from="1712335068940" duration="1258000" />
       <workItem from="1712763583659" duration="3769000" />
       <workItem from="1712938766576" duration="2370000" />
-      <workItem from="1712941563594" duration="1480000" />
+      <workItem from="1712941563594" duration="2986000" />
+      <workItem from="1713885975497" duration="2805000" />
+      <workItem from="1714054721089" duration="3892000" />
     </task>
     <task id="LOCAL-00001" summary="Created project">
       <option name="closed" value="true" />
@@ -245,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713184131281</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="I found more things that needed to change from the coding example and fixed that.">
+      <option name="closed" value="true" />
+      <created>1713184821411</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713184821411</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +283,7 @@
     <MESSAGE value="Added POJOS Attachment and Ticket as well as a Test for Ticket" />
     <MESSAGE value="I realized I was doing it wrong, so I downloaded coding examples and started over using those as a template." />
     <MESSAGE value="I changed all of the classes to Tickets instead of blogs and fixed any errors because of it." />
-    <option name="LAST_COMMIT_MESSAGE" value="I changed all of the classes to Tickets instead of blogs and fixed any errors because of it." />
+    <MESSAGE value="I found more things that needed to change from the coding example and fixed that." />
+    <option name="LAST_COMMIT_MESSAGE" value="I found more things that needed to change from the coding example and fixed that." />
   </component>
 </project>

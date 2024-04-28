@@ -28,7 +28,7 @@ public class TicketServlet extends HttpServlet{
             case "createticket" -> showPostForm(request, response);
             case "view" -> viewPost(request, response);
             case "download" -> downloadAttachment(request, response);
-            default -> listPosts(request, response); // this the list and any other
+            default -> listTickets(request, response); // this the list and any other
         }
         
     }
@@ -50,7 +50,7 @@ public class TicketServlet extends HttpServlet{
 
 
 
-    private void listPosts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void listTickets(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         PrintWriter out = response.getWriter();
 
         //heading and link to create a ticket
