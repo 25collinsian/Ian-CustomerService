@@ -16,7 +16,7 @@
                 ticket#:&nbsp;<c:out value="${ticket.key}"/>
                 <a href="<c:url value='/ticket' >
                     <c:param name='action' value='view' />
-                    <c:param name='ticketId' value='${ticket.key}' />
+                    <c:param name='ticket_Id' value='${ticket.key}' />
                 </c:url>">&nbsp;<c:out value="${ticket.value.title}"/></a><br>
             </c:forEach>
         </c:otherwise>

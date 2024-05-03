@@ -25,8 +25,8 @@ public class TicketServlet extends HttpServlet{
             action = "list";
         }
         switch(action) {
-            case "createticket" -> showPostForm(request, response);
-            case "view" -> viewPost(request, response);
+            case "createticket" -> showTicketForm(request, response);
+            case "view" -> viewTicket(request, response);
             case "download" -> downloadAttachment(request, response);
             default -> listTickets(request, response); // this the list and any other
         }
@@ -43,7 +43,7 @@ public class TicketServlet extends HttpServlet{
             action = "list";
         }
         switch(action) {
-            case "create" -> createPost(request, response);
+            case "create" -> createTicket(request, response);
             default -> response.sendRedirect("ticket"); // this the list and any other
         }
     }
@@ -51,29 +51,12 @@ public class TicketServlet extends HttpServlet{
 
 
     private void listTickets(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        PrintWriter out = response.getWriter();
-
-        //heading and link to create a ticket
-        out.println("<html><body><h2>ticket Posts</h2>");
-        out.println("<a href=\"ticket?action=createticket\">Create Post</a><br><br>");
-
-        // list out the tickets
-        if (ticketDB.size() == 0) {
-            out.println("There are no ticket posts yet...");
-        }
-        else {
-            for (int id : ticketDB.keySet()) {
-                Ticket ticket = ticketDB.get(id);
-                out.println("ticket #" + id);
-                out.println(": <a href=\"ticket?action=view&ticketId=" + id + "\">");
-                out.println(ticket.getTitle() + "</a><br>");
-            }
-        }
-        out.println("</body></html>");
+        request.setAttribute("ticketDatabase", ticketDB);
+        request.getRequestDispatcher("WEB-INF/JSP/view/listTickets.jsp").forward(request, response);
 
     }
 
-    private void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void createTicket(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // create the ticket and set all values up
         Ticket ticket = new Ticket();
         ticket.setTitle(request.getParameter("title"));
@@ -96,7 +79,7 @@ public class TicketServlet extends HttpServlet{
         }
 
         //System.out.println(ticket);  // see what is in the ticket object
-        response.sendRedirect("ticket?action=view&ticketId=" + id);
+        response.sendRedirect("ticket?action=view&ticket_Id=" + id);
     }
 
     private Attachment processAttachment(Part file) throws IOException{
@@ -118,18 +101,18 @@ public class TicketServlet extends HttpServlet{
     }
 
     private void downloadAttachment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String idString = request.getParameter("ticketId");
+        String idString = request.getParameter("ticket_Id");
 
         Ticket ticket = getTicket(idString, response);
 
         String name = request.getParameter("attachment");
         if (name == null) {
-            response.sendRedirect("ticket?action=view&ticketId=" + idString);
+            response.sendRedirect("ticket?action=view&ticket_Id=" + idString);
         }
 
         Attachment attachment = ticket.getAttachment();
         if (attachment == null) {
-            response.sendRedirect("ticket?action=view&ticketId=" + idString);
+            response.sendRedirect("ticket?action=view&ticket_Id=" + idString);
             return;
         }
 
@@ -140,42 +123,19 @@ public class TicketServlet extends HttpServlet{
         out.write(attachment.getContents());
     }
 
-    private void viewPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String idString = request.getParameter("ticketId");
+    private void viewTicket(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String idString = request.getParameter("ticket_Id");
+        Ticket ticket = getTicket(idString, response);
 
-            Ticket ticket = getTicket(idString, response);
+        request.setAttribute("Ticket", ticket);
+        request.setAttribute("ticket_Id", idString);
 
-            PrintWriter out = response.getWriter();
-            out.println("<html><body><h2>ticket Post</h2>");
-            out.println("<h3>" + ticket.getTitle()+ "</h3>");
-            out.println("<p>Date: " + ticket.getDate() + "</p>");
-            out.println("<p>" + ticket.getBody() + "</p>");
-            if (ticket.hasAttachment()) {
-                out.println("<a href=\"ticket?action=download&ticketId=" +
-                        idString + "&attachment="+ ticket.getAttachment().getName() + "\">" +
-                        ticket.getAttachment().getName() + "</a><br><br>");
-            }
-            out.println("<a href=\"ticket\">Return to ticket list</a>");
-            out.println("</body></html>");
-
+        request.getRequestDispatcher("WEB-INF/JSP/view/viewTicket.jsp").forward(request, response);
     }
 
-    private void showPostForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        PrintWriter out = response.getWriter();
-
-        out.println("<html><body><h2>Create a ticket Post</h2>");
-        out.println("<form method=\"POST\" action=\"ticket\" enctype=\"multipart/form-data\">");
-        out.println("<input type=\"hidden\" name=\"action\" value=\"create\">");
-        out.println("Title:<br>");
-        out.println("<input type=\"text\" name=\"title\"><br><br>");
-        out.println("Body:<br>");
-        out.println("<textarea name=\"body\" rows=\"25\" cols=\"100\"></textarea><br><br>");
-        out.println("<b>attachment</b><br>");
-        out.println("<input type=\"file\" name=\"file1\"><br><br>");
-        out.println("<input type=\"submit\" value=\"Submit\">");
-        out.println("</form></body></html>");
-
-    }
+        private void showTicketForm (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+            request.getRequestDispatcher("WEB-INF/JSP/view/TicketForm.jsp").forward(request, response);
+        }
 
     private Ticket getTicket(String idString, HttpServletResponse response) throws ServletException, IOException{
         // empty string id

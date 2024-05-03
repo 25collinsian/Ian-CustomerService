@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>BlogWebApp</artifactId>
+    <artifactId>Ian-CustomerSupport</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>BlogWebApp</name>
     <packaging>war</packaging>
