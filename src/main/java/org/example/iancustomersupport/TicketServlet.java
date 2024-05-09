@@ -9,11 +9,11 @@ import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "ticket", value="/ticket")
-@MultipartConfig(fileSizeThreshold = 5_242_880, maxFileSize = 20_971_520L, maxRequestSize = 41_943_040L)
-public class TicketServlet extends HttpServlet{
-    private volatile int ticket_ID = 1;
-    private Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
+    @WebServlet(name = "ticket", value="/ticket")
+    @MultipartConfig(fileSizeThreshold = 5_242_880, maxFileSize = 20_971_520L, maxRequestSize = 41_943_040L)
+    public class TicketServlet extends HttpServlet{
+        private volatile int ticketID = 1;
+        private Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -74,12 +74,12 @@ public class TicketServlet extends HttpServlet{
         // add and synchronize
         int id;
         synchronized(this) {
-            id = this.ticket_ID++;
+            id = this.ticketID++;
             ticketDB.put(id, ticket);
         }
 
         //System.out.println(ticket);  // see what is in the ticket object
-        response.sendRedirect("ticket?action=view&ticket_Id=" + id);
+        response.sendRedirect("ticket?action=view&ticketID=" + id);
     }
 
     private Attachment processAttachment(Part file) throws IOException{
@@ -101,18 +101,18 @@ public class TicketServlet extends HttpServlet{
     }
 
     private void downloadAttachment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String idString = request.getParameter("ticket_Id");
+        String idString = request.getParameter("ticketID");
 
         Ticket ticket = getTicket(idString, response);
 
         String name = request.getParameter("attachment");
         if (name == null) {
-            response.sendRedirect("ticket?action=view&ticket_Id=" + idString);
+            response.sendRedirect("ticket?action=view&ticketID=" + idString);
         }
 
         Attachment attachment = ticket.getAttachment();
         if (attachment == null) {
-            response.sendRedirect("ticket?action=view&ticket_Id=" + idString);
+            response.sendRedirect("ticket?action=view&ticketID=" + idString);
             return;
         }
 
@@ -124,11 +124,11 @@ public class TicketServlet extends HttpServlet{
     }
 
     private void viewTicket(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idString = request.getParameter("ticket_Id");
+        String idString = request.getParameter("ticketID");
         Ticket ticket = getTicket(idString, response);
 
         request.setAttribute("Ticket", ticket);
-        request.setAttribute("ticket_Id", idString);
+        request.setAttribute("ticketID", idString);
 
         request.getRequestDispatcher("WEB-INF/JSP/view/viewTicket.jsp").forward(request, response);
     }

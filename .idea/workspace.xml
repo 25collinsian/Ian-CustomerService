@@ -9,17 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fb08a49-ba2d-4e5d-a90c-deb9571af874" name="Changes" comment="got the new files added and working.&#10;added everything to pom and web&#10;fixed the 404 error I was getting.">
+    <list default="true" id="5fb08a49-ba2d-4e5d-a90c-deb9571af874" name="Changes" comment="I think I updated the Servlet, so it works and uses the JSP files instead of Java code correctly however now I'm getting a 404 error and I don't know why.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/TicketServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/iancustomersupport/TicketServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/JSP/View/base.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/JSP/view/base.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/JSP/View/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/JSP/view/error.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/JSP/View/listTickets.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/JSP/view/listTickets.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/JSP/View/ticketForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/JSP/view/ticketForm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/JSP/View/viewTicket.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/JSP/view/viewTicket.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/JSP/view/base.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/JSP/view/base.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/JSP/view/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +54,6 @@
     "Notification.DoNotAsk-Vcs Notifications": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
@@ -232,7 +225,7 @@
       <workItem from="1712938766576" duration="2370000" />
       <workItem from="1712941563594" duration="2986000" />
       <workItem from="1713885975497" duration="2805000" />
-      <workItem from="1714054721089" duration="8516000" />
+      <workItem from="1714054721089" duration="11891000" />
     </task>
     <task id="LOCAL-00001" summary="Created project">
       <option name="closed" value="true" />
@@ -282,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714308250488</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="I think I updated the Servlet, so it works and uses the JSP files instead of Java code correctly however now I'm getting a 404 error and I don't know why.">
+      <option name="closed" value="true" />
+      <created>1714753609988</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1714753609988</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +296,7 @@
     <MESSAGE value="I changed all of the classes to Tickets instead of blogs and fixed any errors because of it." />
     <MESSAGE value="I found more things that needed to change from the coding example and fixed that." />
     <MESSAGE value="got the new files added and working.&#10;added everything to pom and web&#10;fixed the 404 error I was getting." />
-    <option name="LAST_COMMIT_MESSAGE" value="got the new files added and working.&#10;added everything to pom and web&#10;fixed the 404 error I was getting." />
+    <MESSAGE value="I think I updated the Servlet, so it works and uses the JSP files instead of Java code correctly however now I'm getting a 404 error and I don't know why." />
+    <option name="LAST_COMMIT_MESSAGE" value="I think I updated the Servlet, so it works and uses the JSP files instead of Java code correctly however now I'm getting a 404 error and I don't know why." />
   </component>
 </project>
