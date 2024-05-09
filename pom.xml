@@ -7,7 +7,7 @@
     <groupId>com.example</groupId>
     <artifactId>Ian-CustomerSupport</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>BlogWebApp</name>
+    <name>TicketWebApp</name>
     <packaging>war</packaging>
 
     <properties>

@@ -12,7 +12,7 @@ import jakarta.servlet.annotation.*;
     @WebServlet(name = "ticket", value="/ticket")
     @MultipartConfig(fileSizeThreshold = 5_242_880, maxFileSize = 20_971_520L, maxRequestSize = 41_943_040L)
     public class TicketServlet extends HttpServlet{
-        private volatile int ticketID = 1;
+        private volatile int ticket_ID = 1;
         private Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
 
     @Override
@@ -74,7 +74,7 @@ import jakarta.servlet.annotation.*;
         // add and synchronize
         int id;
         synchronized(this) {
-            id = this.ticketID++;
+            id = this.ticket_ID++;
             ticketDB.put(id, ticket);
         }
 
