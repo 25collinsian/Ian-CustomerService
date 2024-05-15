@@ -10,7 +10,7 @@
     <c:if test="${ticket.hasAttachment()}">
         <a href="<c:url value='/ticket' >
             <c:param name='action' value='download' />
-            <c:param name='ticketId' value='${ticketId}' />
+            <c:param name='ticketID' value='${ticketId}' />
             <c:param name='attachment' value='${ticket.attachment.name}'/>
         </c:url>"><c:out value="${ticket.attachment.name}"/></a>
     </c:if>

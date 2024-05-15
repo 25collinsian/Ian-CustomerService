@@ -79,7 +79,7 @@ import jakarta.servlet.annotation.*;
         }
 
         //System.out.println(ticket);  // see what is in the ticket object
-        response.sendRedirect("ticket?action=view&ticketID=" + id);
+        response.sendRedirect("ticket?action=view&ticket_ID=" + id);
     }
 
     private Attachment processAttachment(Part file) throws IOException{
@@ -101,18 +101,18 @@ import jakarta.servlet.annotation.*;
     }
 
     private void downloadAttachment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String idString = request.getParameter("ticketID");
+        String idString = request.getParameter("ticket_ID");
 
         Ticket ticket = getTicket(idString, response);
 
         String name = request.getParameter("attachment");
         if (name == null) {
-            response.sendRedirect("ticket?action=view&ticketID=" + idString);
+            response.sendRedirect("ticket?action=view&ticket_ID=" + idString);
         }
 
         Attachment attachment = ticket.getAttachment();
         if (attachment == null) {
-            response.sendRedirect("ticket?action=view&ticketID=" + idString);
+            response.sendRedirect("ticket?action=view&ticket_ID=" + idString);
             return;
         }
 
@@ -124,17 +124,17 @@ import jakarta.servlet.annotation.*;
     }
 
     private void viewTicket(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idString = request.getParameter("ticketID");
+        String idString = request.getParameter("ticket_ID");
         Ticket ticket = getTicket(idString, response);
 
-        request.setAttribute("Ticket", ticket);
-        request.setAttribute("ticketID", idString);
+        request.setAttribute("ticket", ticket);
+        request.setAttribute("ticketId", idString);
 
         request.getRequestDispatcher("WEB-INF/JSP/view/viewTicket.jsp").forward(request, response);
     }
 
         private void showTicketForm (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-            request.getRequestDispatcher("WEB-INF/JSP/view/TicketForm.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/JSP/view/ticketForm.jsp").forward(request, response);
         }
 
     private Ticket getTicket(String idString, HttpServletResponse response) throws ServletException, IOException{
